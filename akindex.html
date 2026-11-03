@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Course</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .card {
+            background: #1e293b;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #334155;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .thumbnail-box {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: #020617;
+            overflow: hidden;
+        }
+
+        .thumbnail-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .content-box {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .caption {
+            font-size: 16px;
+            line-height: 1.4;
+            color: #e2e8f0;
+            font-weight: 600;
+        }
+
+        .btn-view {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: #22c55e;
+            color: #052e16;
+            border: none;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .btn-view:active {
+            opacity: 0.85;
+        }
+
+        #viewer-box {
+            display: none;
+            width: 100%;
+            height: 90vh;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #334155;
+        }
+
+        #course-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            border: 1px solid #475569;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+<div class="container">
+    <div id="course-card" class="card">
+        <div class="thumbnail-box">
+            <!-- Thumbnail Link -->
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600" alt="Thumbnail">
+        </div>
+        <div class="content-box">
+            <!-- Caption -->
+            <p class="caption">Daily Course Classes - Aaj Ka Naya Topic</p>
+
+            <button class="btn-view" onclick="openCourse()">VIEW COURSE</button>
+        </div>
+    </div>
+
+    <div id="viewer-box">
+        <button class="close-btn" onclick="closeViewer()">✕ Close</button>
+        <iframe id="course-frame" src=""></iframe>
+    </div>
+</div>
+
+<script>
+    // Roz yahan par naya Vercel link paste kar dena
+    const DAILY_LINK = "https://your-vercel-link.vercel.app";
+
+    function openCourse() {
+        document.getElementById("course-frame").src = DAILY_LINK;
+        document.getElementById("course-card").style.display = "none";
+        document.getElementById("viewer-box").style.display = "block";
+    }
+
+    function closeViewer() {
+        document.getElementById("course-frame").src = "";
+        document.getElementById("viewer-box").style.display = "none";
+        document.getElementById("course-card").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
